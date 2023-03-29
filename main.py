@@ -13,10 +13,6 @@ class PlayerInterface:
       self.barraTarefasFrame.grid(row=1, column=2)
       self.barraTarefasFrame.pack(side=BOTTOM, expand=False)
 
-      label1 = Label(self.barraTarefasFrame, text="I'm at (0, 0)", bg="red")
-      label1.grid(row=1, column=1)
-
-      self.mainWindow.mainloop()
 
 
 PlayerInterface()
