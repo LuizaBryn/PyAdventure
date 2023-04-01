@@ -66,3 +66,11 @@ RNF - As modelagens serão feitas usando o software Visual Paradigm
 RNF - O jogo poderá ser executado em desktops usando windows 10 e windows 11
 RNF - As especificações mínimas para execução é um processador de 1ghz ou mais, e ao menos 4gb de ram.
 RNF - Será utilizado PyNetGames para fazer a comunicação entre os jogadores.
+
+	Regras de Negócio:
+
+RN1 - Os baralhos de cada jogador são compostos por 50 cartas, divididas igualmente entre as opções, e tem sua sequência aleatória. 
+RN2 - Caso o baralho acabe durante o jogo, um novo baralho é criado com as 50 cartas.
+RN8 - Caso tente comprar além do limite aparece um alerta e o jogador não receberá a(s) carta(s).
+RN3 - Ao fim de cada turno o jogador pode ter no máximo 10 cartas na sua mão.
+RN5 - Ao usar uma carta, ele é consumida, não ficando disponível.
