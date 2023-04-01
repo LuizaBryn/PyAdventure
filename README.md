@@ -1,6 +1,6 @@
 # PyAdventure
 
-Introdução
+	Introdução
 
 	Objetivo do desenvolvimento
 Desenvolvimento de um programa para a disciplina de Análise e Projeto de Sistemas que gere partidas de um contra um do jogo criado pelo grupo PyAdventure a partir do suporte do PyNetGames. Estas partidas devem suportar jogador versus jogador e jogador versus máquina de forma on-line.
@@ -36,7 +36,7 @@ RF : Requisito Funcional
 RNF: Requisito não Funcional
 
 
-Visão Geral
+	Visão Geral
 Premissas de desenvolvimento
 O jogo deve ser desenvolvido em Python e suas tecnologias;
 A interface do jogo deve ser feita utilizando a biblioteca TKinter;
@@ -44,7 +44,7 @@ O jogo deve utilizar PynetGames como suporte para execução distribuída;
 Os diagramas de modelagem devem ser feitos em UML2, utilizando o software Visual Paradigm
 
 
-Requisitos de Software
+	Requisitos de Software
 
 Requisitos Funcionais:
 
