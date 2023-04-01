@@ -38,6 +38,10 @@ class PlayerInterface:
 
         self.cardBoard = Frame(self.barraTarefasFrame, bg="#56899F")
         self.cardBoard.grid(row=0, column=0, sticky="nsew")
+        for i in range(5):
+            self.cardBoard.grid_columnconfigure(i, weight=1)
+            carta = Button(self.cardBoard, text="Carta {}".format(i+1))
+            carta.grid(row=0, column=i)
         self.pular_vez = Button(self.barraTarefasFrame, text="Passar vez", bg="#91DBBB", fg="black", font=("Arial", 14, "bold"),
                                 width=10, height=2, bd=5, relief="raised", activebackground="#254954", activeforeground="white")
         self.pular_vez.grid(row=0, column=1)
