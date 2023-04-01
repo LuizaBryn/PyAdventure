@@ -6,20 +6,42 @@ class PlayerInterface:
         self.mainWindow = Tk()
         self.mainWindow.title("PyAdventure")
         self.mainWindow.iconbitmap("img/icon.ico")
-        self.mainWindow.geometry("1280x720")
         self.mainWindow.resizable(False, False)
+        self.mainWindow.geometry("1280x720")
         self.mainWindow["bg"] = "#DBE9F4"
+        self.mainWindow.grid_columnconfigure(0, weight=1)
+        self.mainWindow.grid_rowconfigure(0, weight=1)
+        self.mainWindow.grid_rowconfigure(1, weight=7)
+        self.mainWindow.grid_rowconfigure(2, weight=3)
 
-        self.combateFrame = Frame(
-            self.mainWindow, width=1280, height=520, bg="#DBE9F4")
+        self.statusBoard = Frame(self.mainWindow)
+        self.statusBoard.grid(row=0, column=0, sticky="nsew")
+        self.statusBoard.grid_columnconfigure(0, weight=1)
+        self.statusBoard.grid_columnconfigure(1, weight=6)
+        self.statusBoard.grid_columnconfigure(2, weight=1)
+        self.statusBoard.grid_rowconfigure(0, weight=1)
+        self.statusBoard.grid_rowconfigure(1, weight=1)
+
+        self.lifePlayer1 = Label(self.statusBoard, text="Vida: X")
+        self.lifePlayer1.grid(row=0, column=0)
+        self.lifePlayer2 = Label(self.statusBoard, text="Vida: Y")
+        self.lifePlayer2.grid(row=0, column=2)
+        self.roundCounter = Label(self.statusBoard, text="Round X")
+        self.roundCounter.grid(row=0, column=1)
+
         self.barraTarefasFrame = Frame(
-            self.mainWindow, width=1280, height=200, bg="gray")
-        self.barraTarefasFrame.grid(row=1, column=2)
-        self.barraTarefasFrame.pack(side=BOTTOM, expand=False)
-        self.label1 = Label(self.barraTarefasFrame,
-                            text='Sou um label e to no frame das carta na posição 0 0').place(x=0, y=0)
-        self.combateFrame.pack()
-        self.barraTarefasFrame.pack()
+            self.mainWindow, bg="#36696F")
+        self.barraTarefasFrame.grid(row=2, column=0, sticky="nsew")
+        self.barraTarefasFrame.grid_columnconfigure(0, weight=6)
+        self.barraTarefasFrame.grid_columnconfigure(1, weight=1)
+        self.barraTarefasFrame.grid_rowconfigure(0, weight=1)
+
+        self.cardBoard = Frame(self.barraTarefasFrame, bg="#56899F")
+        self.cardBoard.grid(row=0, column=0, sticky="nsew")
+        self.pular_vez = Button(self.barraTarefasFrame, text="Passar vez", bg="#91DBBB", fg="black", font=("Arial", 14, "bold"),
+                                width=10, height=2, bd=5, relief="raised", activebackground="#254954", activeforeground="white")
+        self.pular_vez.grid(row=0, column=1)
+
         self.mainWindow.mainloop()
 
 
