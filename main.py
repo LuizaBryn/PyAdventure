@@ -1,7 +1,31 @@
 from tkinter import *
 
+# --------- importações do PyNetgames que serão usadas posteriormente(?): -----------
 
-class PlayerInterface:
+# import logging
+# from typing import Dict, Optional
+# from uuid import UUID
+
+# from py_netgames_client.tkinter_client.PyNetgamesServerListener import PyNetgamesServerListener
+# from py_netgames_client.tkinter_client.PyNetgamesServerProxy import PyNetgamesServerProxy
+# from py_netgames_model.messaging.message import MatchStartedMessage, MoveMessage
+
+# from tkinter_sample.ServerConnectionMenubar import ServerConnectionMenubar
+
+# -------------------------------------------------------------------------------------
+
+
+class PyAdventureInterface():
+
+    # _tk: Tk
+    # _server_proxy: PyNetgamesServerProxy
+    # _menu_bar = ServerConnectionMenubar
+    # _ongoing_match: bool
+    # _match_id: UUID
+    # _board: Optional[PyAdventureBoard]
+    # _buttons: Dict[PyAdventureCoordinate, Button]
+    # _logger: logging.Logger
+
     def __init__(self):
         self.mainWindow = Tk()
         self.mainWindow.title("PyAdventure")
@@ -55,7 +79,7 @@ class PlayerInterface:
         self.menu.grid_rowconfigure(1, weight=1)
         self.menu.grid_columnconfigure(0, weight=1)
 
-        for i in range(5):
+        for i in range(4):
             self.cardBoard.grid_columnconfigure(i, weight=1)
 
             carta = Button(self.cardBoard, name=str(i), text="Carta {}".format(i+1),
@@ -96,4 +120,4 @@ class PlayerInterface:
         popup_label.pack()
 
 
-PlayerInterface()
+PyAdventureInterface()
