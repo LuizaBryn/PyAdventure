@@ -49,15 +49,32 @@ class PlayerInterface:
 
         for i in range(5):
             self.cardBoard.grid_columnconfigure(i, weight=1)
-            carta = Button(self.cardBoard, text="Carta {}".format(
-                i+1), padx=50, pady=80)
+
+            carta = Button(self.cardBoard, name=str(i), text="Carta {}".format(i+1),
+                           padx=50, pady=80, command=self.remove_card)
             carta.grid(row=1, column=i)
 
+            carta.bind('<Button-1>', self.remove_card)
+
         self.pular_vez = Button(self.barraTarefasFrame, text="Passar vez", bg="#91DBBB", fg="black", font=("Arial", 14),
-                                width=10, height=2, bd=5, relief="raised", activebackground="#254954", activeforeground="white")
+                                width=10, height=2, bd=5, relief="raised", activebackground="#254954", activeforeground="white", command=self.add_card)
         self.pular_vez.grid(row=0, column=1)
 
         self.mainWindow.mainloop()
+
+    def remove_card(self, event=None):
+        card = event.widget
+        column = int(card.winfo_name())
+        card.grid_remove()
+        self.cardBoard.grid_columnconfigure(column, minsize=0)
+
+    def add_card(self, event=None):
+        new_column = self.cardBoard.grid_size()[0] + 1
+        self.cardBoard.grid_columnconfigure(new_column, weight=1)
+        new_card = Button(self.cardBoard, text="Carta", name=str(new_column),
+                          padx=50, pady=80)
+        new_card.grid(row=1, column=new_column)
+        new_card.bind('<Button-1>', self.remove_card)
 
 
 PlayerInterface()
