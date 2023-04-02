@@ -36,16 +36,24 @@ class PlayerInterface:
         self.roundCounter.grid(row=0, column=1)
 
         self.barraTarefasFrame = Frame(
-            self.mainWindow, bg="#36696F")
+            self.mainWindow)
         self.barraTarefasFrame.grid(row=2, column=0, sticky="nsew")
-        self.barraTarefasFrame.grid_columnconfigure(0, weight=6)
-        self.barraTarefasFrame.grid_columnconfigure(1, weight=1)
+        self.barraTarefasFrame.grid_columnconfigure(
+            0, weight=7)  # coluna das cartas
+        self.barraTarefasFrame.grid_columnconfigure(
+            1, weight=2)  # coluna do menu
         self.barraTarefasFrame.grid_rowconfigure(0, weight=1)
 
         self.cardBoard = Frame(self.barraTarefasFrame, bg="#56899F")
         self.cardBoard.grid(row=0, column=0, sticky="nsew")
         self.cardBoard.grid_rowconfigure(0, weight=1)
         self.cardBoard.grid_rowconfigure(1, weight=10)
+
+        self.menu = Frame(self.barraTarefasFrame, bg="#36696F")
+        self.menu.grid(row=0, column=1, sticky="nsew")
+        self.menu.grid_rowconfigure(0, weight=1)
+        self.menu.grid_rowconfigure(1, weight=1)
+        self.menu.grid_columnconfigure(0, weight=1)
 
         for i in range(5):
             self.cardBoard.grid_columnconfigure(i, weight=1)
@@ -56,9 +64,13 @@ class PlayerInterface:
 
             carta.bind('<Button-1>', self.remove_card)
 
-        self.pular_vez = Button(self.barraTarefasFrame, text="Passar vez", bg="#91DBBB", fg="black", font=("Arial", 14),
+        self.pular_vez = Button(self.menu, text="Passar vez", bg="#91DBBB", fg="black", font=("Arial", 14),
                                 width=10, height=2, bd=5, relief="raised", activebackground="#254954", activeforeground="white", command=self.add_card)
-        self.pular_vez.grid(row=0, column=1)
+        self.pular_vez.grid(row=0, column=0)
+
+        self.card_description = Button(self.menu, text="Cartas", bg="#91DBBB", fg="black", font=("Arial", 14),
+                                       width=10, height=2, bd=5, relief="raised", activebackground="#254954", activeforeground="white", command=self.see_cards)
+        self.card_description.grid(row=1, column=0)
 
         self.mainWindow.mainloop()
 
@@ -75,6 +87,13 @@ class PlayerInterface:
                           padx=50, pady=80)
         new_card.grid(row=1, column=new_column)
         new_card.bind('<Button-1>', self.remove_card)
+
+    def see_cards(self):
+        popup = Toplevel(self.mainWindow)
+        popup.title("Cartas PyAdventure")
+        popup.geometry("200x100")
+        popup_label = Label(popup, text="Aqui ficarão as descrições!")
+        popup_label.pack()
 
 
 PlayerInterface()
