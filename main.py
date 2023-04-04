@@ -34,9 +34,10 @@ class PyAdventureInterface():
         self.mainWindow.geometry("1280x720")
         self.mainWindow["bg"] = "#DBE9F4"
         self.mainWindow.grid_columnconfigure(0, weight=1)
-        self.mainWindow.grid_rowconfigure(0, weight=1)
-        self.mainWindow.grid_rowconfigure(1, weight=20)
-        self.mainWindow.grid_rowconfigure(2, weight=3)
+        self.mainWindow.grid_rowconfigure(0, weight=1)  # statusBoard
+        self.mainWindow.grid_rowconfigure(1, weight=20)  # herosBoard
+        self.mainWindow.grid_rowconfigure(
+            2, weight=3)  # cardBoarda AND menuBoard
 
         self.statusBoard = Frame(self.mainWindow)
         self.statusBoard.grid(row=0, column=0, sticky="nsew")
@@ -58,6 +59,16 @@ class PyAdventureInterface():
         self.lifePlayer2.grid(row=1, column=2)
         self.roundCounter = Label(self.statusBoard, text="Round X")
         self.roundCounter.grid(row=0, column=1)
+
+        self.herosBoard = Frame(self.mainWindow)
+        self.herosBoard.grid(row=1, column=0, sticky="nsew")
+        self.herosBoard.grid_columnconfigure(0, weight=1)
+        self.herosBoard.grid_columnconfigure(1, weight=1)
+        self.herosBoard.grid_rowconfigure(2, weight=1)
+
+        self.heroDruida = PhotoImage(file="img/hero_druida")
+        self.heroGuerreiro = PhotoImage(file="img/hero_guerreiro")
+        self.heroMago = PhotoImage(file="img/hero_mago")
 
         self.barraTarefasFrame = Frame(
             self.mainWindow)
