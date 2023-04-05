@@ -35,7 +35,7 @@ class PyAdventureInterface():
         self.mainWindow["bg"] = "#DBE9F4"
         self.mainWindow.grid_columnconfigure(0, weight=1)
         self.mainWindow.grid_rowconfigure(0, weight=1)  # statusBoard
-        self.mainWindow.grid_rowconfigure(1, weight=20)  # herosBoard
+        self.mainWindow.grid_rowconfigure(1, weight=3)  # herosBoard
         self.mainWindow.grid_rowconfigure(
             2, weight=3)  # cardBoarda AND menuBoard
 
@@ -47,17 +47,19 @@ class PyAdventureInterface():
         self.statusBoard.grid_rowconfigure(0, weight=1)
         self.statusBoard.grid_rowconfigure(1, weight=1)
 
-        self.lifePlayer1 = Label(self.statusBoard, text="Vida: X")
+        self.lifePlayer1 = Label(
+            self.statusBoard, text="Vida: X", font=60, pady=10)
         self.lifePlayer1.grid(row=0, column=0)
         self.manaPlayer1 = Label(
-            self.statusBoard, text="Mana: X", padx=0, pady=0)
+            self.statusBoard, text="Mana: X", font=60, padx=0, pady=10)
         self.manaPlayer1.grid(row=1, column=0)
-        self.lifePlayer2 = Label(self.statusBoard, text="Vida: Y")
+        self.lifePlayer2 = Label(self.statusBoard, font=60, text="Vida: Y")
         self.lifePlayer2.grid(row=0, column=2)
         self.lifePlayer2 = Label(
-            self.statusBoard, text="Mana: Y", padx=0, pady=0)
+            self.statusBoard, text="Mana: Y", font=60,  padx=0, pady=10)
         self.lifePlayer2.grid(row=1, column=2)
-        self.roundCounter = Label(self.statusBoard, text="Round X")
+        self.roundCounter = Label(
+            self.statusBoard, text="Round _", font=60, pady=10)
         self.roundCounter.grid(row=0, column=1)
 
         self.herosBoard = Frame(self.mainWindow)
@@ -66,9 +68,38 @@ class PyAdventureInterface():
         self.herosBoard.grid_columnconfigure(1, weight=1)
         self.herosBoard.grid_rowconfigure(2, weight=1)
 
-        self.heroDruida = PhotoImage(file="img/hero_druida")
-        self.heroGuerreiro = PhotoImage(file="img/hero_guerreiro")
-        self.heroMago = PhotoImage(file="img/hero_mago")
+        self.heroDruidaLeft = PhotoImage(file="./img/hero_druida_left.png")
+        self.heroGuerreiroLeft = PhotoImage(
+            file="./img/hero_guerreiro_left.png")
+        self.heroMagoLeft = PhotoImage(file="./img/hero_mago_left.png")
+
+        self.labelDruida = Label(self.herosBoard, image=self.heroDruidaLeft)
+        # if heroPlayerLeft == "druida":
+        self.labelDruida.grid(row=0, column=0)
+        self.labelGuerreiro = Label(
+            self.herosBoard, image=self.heroGuerreiroLeft)
+        # if heroPlayerLeft == "guerreiro":
+        self.labelGuerreiro.grid(row=0, column=0)
+        self.labelMago = Label(self.herosBoard, image=self.heroMagoLeft)
+        # if heroPlayerLeft == "mago":
+        self.labelMago.grid(row=0, column=0)
+
+        self.heroDruidaRight = PhotoImage(file="./img/hero_druida_right.png")
+        self.heroGuerreiroRight = PhotoImage(
+            file="./img/hero_guerreiro_right.png")
+        self.heroMagoRight = PhotoImage(file="./img/hero_mago_right.png")
+
+        self.labelDruida = Label(self.herosBoard, image=self.heroDruidaRight)
+        # if heroPlayerRight == "druida":
+        self.labelDruida.grid(row=0, column=1)
+        self.labelGuerreiro = Label(
+            self.herosBoard, image=self.heroGuerreiroRight)
+        # if heroPlayerRight == "guerreiro":
+        self.labelGuerreiro.grid(row=0, column=1, sticky="s")
+        self.labelMago = Label(
+            self.herosBoard, image=self.heroMagoRight)
+        # if heroPlayerRight == "mago":
+        self.labelMago.grid(row=0, column=1)
 
         self.barraTarefasFrame = Frame(
             self.mainWindow)
@@ -79,7 +110,7 @@ class PyAdventureInterface():
             1, weight=2)  # coluna do menu
         self.barraTarefasFrame.grid_rowconfigure(0, weight=1)
 
-        self.cardBoard = Frame(self.barraTarefasFrame, bg="#56899F")
+        self.cardBoard = Frame(self.barraTarefasFrame, bg="#56899F", border=15)
         self.cardBoard.grid(row=0, column=0, sticky="nsew")
         self.cardBoard.grid_rowconfigure(0, weight=1)
         self.cardBoard.grid_rowconfigure(1, weight=10)
@@ -94,7 +125,7 @@ class PyAdventureInterface():
             self.cardBoard.grid_columnconfigure(i, weight=1)
 
             carta = Button(self.cardBoard, name=str(i), text="Carta {}".format(i+1),
-                           padx=50, pady=80, command=self.remove_card)
+                           padx=40, pady=80, command=self.remove_card)
             carta.grid(row=1, column=i)
 
             carta.bind('<Button-1>', self.remove_card)
